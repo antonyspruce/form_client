@@ -1,0 +1,35 @@
+{
+  "name": "rnform",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "mobx": "^5.14.2",
+    "mobx-react-lite": "^1.5.0",
+    "mobx-state-tree": "^3.14.1",
+    "react": "16.8.1",
+    "react-native": "0.61.2",
+    "react-native-gesture-handler": "^1.4.1",
+    "react-native-paper": "^3.1.1",
+    "react-native-vector-icons": "^6.6.0",
+    "react-navigation": "^4.0.10",
+    "react-navigation-material-bottom-tabs": "^2.1.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/runtime": "^7.5.0",
+    "@react-native-community/eslint-config": "^0.0.3",
+    "babel-jest": "^24.1.0",
+    "jest": "^24.1.0",
+    "metro-react-native-babel-preset": "^0.51.1",
+    "react-test-renderer": "16.8.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
