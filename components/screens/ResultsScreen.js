@@ -1,15 +1,15 @@
 import React from 'react';
-import {View, FlatList, StyleSheet, AsyncStorage} from 'react-native';
-import {observer} from 'mobx-react-lite';
-import {getSnapshot} from 'mobx-state-tree';
-import {withNavigation} from 'react-navigation';
+import { View, FlatList, StyleSheet, AsyncStorage } from 'react-native';
+import { observer } from 'mobx-react-lite';
+import { getSnapshot } from 'mobx-state-tree';
+import { withNavigation } from 'react-navigation';
 import useInject from '../stores/useInject';
 import Header from '../layout/Header';
 import ResultItem from '../layout/ResultItem';
 import SendButton from '../layout/SendButton';
 
-const Results = ({navigation}) => {
-  const {answerStore, current} = useInject(store => ({
+const Results = ({ navigation }) => {
+  const { answerStore, current } = useInject(store => ({
     answerStore: store.answerStore,
     current: store.current,
   }));
@@ -30,7 +30,7 @@ const Results = ({navigation}) => {
       <FlatList
         data={answerStore.answers}
         keyExtractor={(item, index) => index.toString(10)}
-        renderItem={({item, index}) => (
+        renderItem={({ item, index }) => (
           <ResultItem
             item={item}
             id={index}
@@ -42,7 +42,7 @@ const Results = ({navigation}) => {
           answerStore.answers.length > 0 && (
             <View>
               <SendButton title="Очистить" onPress={onClear} />
-              <SendButton title="Прочитать" onPress={} />
+              <SendButton title="Прочитать" onPress={onClear} />
             </View>
           )
         }
