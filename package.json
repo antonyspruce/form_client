@@ -9,6 +9,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-firebase/app": "^6.0.3",
+    "@react-native-firebase/auth": "^6.0.3",
+    "@react-native-firebase/firestore": "^6.0.3",
     "mobx": "^5.14.2",
     "mobx-react-lite": "^1.5.0",
     "mobx-state-tree": "^3.14.1",
