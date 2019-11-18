@@ -3,6 +3,7 @@ import { View, FlatList, StyleSheet, AsyncStorage } from 'react-native';
 import { observer } from 'mobx-react-lite';
 import { getSnapshot } from 'mobx-state-tree';
 import { withNavigation } from 'react-navigation';
+import firestore from '@react-native-firebase/firestore';
 import useInject from '../stores/useInject';
 import Header from '../layout/Header';
 import ResultItem from '../layout/ResultItem';
@@ -11,7 +12,7 @@ import SendButton from '../layout/SendButton';
 const Results = ({ navigation }) => {
   const { answerStore, current } = useInject(store => ({
     answerStore: store.answerStore,
-    current: store.current,
+    current: store.current
   }));
   const onClear = () => {
     answerStore.clear();
@@ -23,6 +24,11 @@ const Results = ({ navigation }) => {
     current.setId(ind);
     current.setAnswer(getSnapshot(answerStore.answers[ind]));
     navigation.navigate('Home');
+  };
+  const onSend = () => {
+    firestore()
+      .collection('answers')
+      .add(getSnapshot(answerStore));
   };
   return (
     <View style={styles.screenContainer}>
@@ -41,8 +47,8 @@ const Results = ({ navigation }) => {
         ListFooterComponent={
           answerStore.answers.length > 0 && (
             <View>
-              <SendButton title="Очистить" onPress={onClear} />
-              <SendButton title="Прочитать" onPress={onClear} />
+              <SendButton title='Очистить' onPress={onClear} />
+              <SendButton title='Отправить' onPress={onSend} />
             </View>
           )
         }
@@ -54,8 +60,8 @@ const Results = ({ navigation }) => {
 const styles = StyleSheet.create({
   screenContainer: {
     backgroundColor: '#f5f5f5',
-    flex: 1,
-  },
+    flex: 1
+  }
 });
 
 export default withNavigation(observer(Results));
